@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block content %}
+<br>
+    <div class="eventos-section">
+        {% for evento in eventos_list %}
+            <div class="evento-item">
+                <h2>{{ evento.title }}</h2>
+                <p>{{ evento.descripcion_evento }}</p>
+                <p>Fecha: {{ evento.date }} Hora: {{ evento.time }}</p>
+                <p>Dirección: {{ evento.address }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

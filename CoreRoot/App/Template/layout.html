@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Avanza Libertad</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link href="{% static '/css/main.css' %}" rel="stylesheet" />
+    <noscript
+      ><link href="{% static '/css/noscript.css' %}" rel="stylesheet"
+    /></noscript>
+  </head>
+  <body class="is-preload landing">
+    <div id="page-wrapper">
+        
+    <!-- Include Header -->
+    {% include 'Componentes/header.html' %}
+
+    <!-- Main content block where other templates will insert their content -->
+    {% block content %}
+    {% endblock %}
+
+    <!-- Include Footer -->
+    {% include 'Componentes/footer.html' %}
+
+    <!-- Scripts -->
+    <script src="{% static '/js/jquery.min.js' %}"></script>
+    <script src="{% static '/js/jquery.scrolly.min.js' %}"></script>
+    <script src="{% static '/js/jquery.dropotron.min.js' %}"></script>
+    <script src="{% static '/js/jquery.scrollex.min.js' %}"></script>
+    <script src="{% static '/js/browser.min.js' %}"></script>
+    <script src="{% static '/js/breakpoints.min.js' %}"></script>
+    <script src="{% static '/js/util.js' %}"></script>
+    <script src="{% static '/js/main.js' %}"></script>
+</body>
+</html>

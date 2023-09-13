@@ -1,0 +1,84 @@
+{% extends 'layout.html' %}
+{% load custom_filters %}
+{% load static %}
+
+{% block title %}
+Calendario
+{% endblock %}
+
+{% block content %}
+<style>
+    .calendar-container {
+        background-color: #1c1d26; 
+        padding: 20px;
+        border-radius: 5px;
+        color: #ffffff;
+    }
+    .calendar-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .calendar-table th {
+        padding: 10px;
+        border-bottom: 2px solid #f56a6a;
+        text-align: center; /* Centered text for table headers */
+    }
+    .calendar-table td {
+        padding: 10px;
+        border-bottom: 1px solid #444;
+        text-align: center;
+    }
+    .calendar-table .event-day {
+        background-color: #2c2d36;
+    }
+    .calendar-table .event-link {
+        color: #f56a6a;
+        text-decoration: none;
+    }
+    .calendar-table .event-link:hover {
+        text-decoration: underline;
+    }
+    .month-title {
+        text-align: center;
+        color: #f56a6a;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+</style>
+
+
+<br>
+<br>
+<div class="calendar-container">
+    <div class="month-title">
+        {{ month_name }} {{ year }}
+    </div>
+    <table class="calendar-table">
+        <tr>
+            <th>Domingo</th>
+            <th>Lunes</th>
+            <th>Martes</th>
+            <th>Miércoles</th>
+            <th>Jueves</th>
+            <th>Viernes</th>
+            <th>Sábado</th>
+        </tr>
+        {% for week in calendar %}
+          <tr>
+            {% for day in week %}
+              <td {% if day > 0 and day in events %}class="event-day"{% endif %}>
+                {% if day > 0 %}
+                    {% if day in events %}
+                        <a href="{% url 'day_detail' year=year month=month day=day %}" style="color: red;">{{ day }}</a>
+                    {% else %}
+                        {{ day }}
+                    {% endif %}
+                {% endif %}
+              </td>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

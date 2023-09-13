@@ -1,0 +1,73 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    .form-style {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #1c1d26; /* Background color taken from your CSS file */
+        border-radius: 5px;
+    }
+    
+    .form-group {
+        margin-bottom: 15px;
+    }
+    
+    .form-group p {
+        margin-bottom: 5px;
+    }
+    
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        color: #ffffff; /* Making label color white to be visible on dark background */
+    }
+    
+    .form-group input {
+        width: 100%;
+        padding: 10px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        background-color: #2c2d36; /* Making input background slightly darker than form background */
+        color: #ffffff; /* Making input text color white */
+    }
+    
+    .button.primary {
+        background-color: #f56a6a; /* You can replace this with any desirable color */
+        border: none;
+        color: #fff;
+        padding: 10px 20px;
+        font-weight: bold;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        text-align: center; /* This centers the text horizontally */
+        display: inline-block; /* This allows the text-align to work */
+        width: 120x; /* Adjust width as necessary */
+        height: 50px; /* Adjust height as necessary */
+        line-height: 30px; /* This should be equal to the height to center the text vertically */
+    }
+    
+    .button.primary:hover {
+        background-color: #db5050; /* Darker shade for hover effect, adjust as necessary */
+    }
+    
+    
+    
+    
+</style>
+
+<div class="contact-form">
+    <br>
+<form method="post" class="form-style">
+    {% csrf_token %}
+    <div class="form-group">
+        {{ form.as_p }}
+    </div>
+    <button type="submit" class="button primary">Enviar</button>
+</form>
+</div>
+{% endblock %}
+

@@ -1,0 +1,53 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+  .noticias-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .noticia-item {
+    max-width: 500px;
+    background-color: #1c1d26;
+    border: 1px solid #ccc; /* Add borders between noticias */
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px; /* Adds space between noticias */
+    color: #ffffff;
+  }
+  
+  .noticia-item h2 {
+    font-size: 18px; /* Adjusts the font size of the title */
+    margin-bottom: 10px;
+  }
+  
+  .noticia-item p {
+    font-size: 14px; /* Adjusts the font size of the content */
+    margin-bottom: 10px;
+    line-height: 1.5; /* Adjusts the line height to make the text more readable */
+  }
+
+  .noticia-item img {
+    width: 100%; /* Makes the image fill the container */
+    height: auto; /* Maintains the aspect ratio of the image */
+    border-radius: 4px; /* Optional: Adds rounded corners to the image */
+  }
+</style>
+
+<br><br>
+<div class="noticias-container">
+  {% for noticia in noticias %}
+    <div class="noticia-item">
+      <h2>{{ noticia.titulo }}</h2>
+      {% if noticia.imagen %}
+      <a href="{% url 'noticia_detail' pk=noticia.id %}"><img src="{{ noticia.imagen.url }}" alt="{{ noticia.titulo }}" /></a>
+      {% endif %}
+      <p>{{ noticia.contenido|truncatewords:20 }}</p> <!-- Limits the description to 20 words -->
+      <p>{{ noticia.fecha }}</p>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

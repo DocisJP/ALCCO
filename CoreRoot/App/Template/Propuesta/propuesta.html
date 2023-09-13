@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<style>
+    .propuesta-container {
+        padding-left: 20px; /* Adjust as necessary to add space at the left */
+    }
+    
+    .propuesta-item {
+        line-height: 1.5; /* Adjust line height to control space between lines */
+    }
+    
+    .propuesta-description {
+        margin-bottom: 20px; /* Adds some space between description and image */
+    }
+</style>
+
+<div class="propuesta-container">
+    {% for propuesta in propuestas %}
+        <div class="propuesta-item">
+            <br><br><br>
+            <h2>{{ propuesta.title }}</h2>
+            <p class="propuesta-description">{{ propuesta.description|linebreaks }}</p>
+            {% if propuesta.image %}
+                <img src="{{ propuesta.image.url }}" alt="{{ propuesta.title }}" />
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

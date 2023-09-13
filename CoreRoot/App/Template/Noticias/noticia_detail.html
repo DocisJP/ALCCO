@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+
+<div style="background-color: #1c1d26; padding: 20px; color: #ffffff;">
+    <br><br>
+    <h2>{{ object.titulo }}</h2>
+    {% if object.imagen %}
+    <img src="{{ object.imagen.url }}" alt="{{ object.titulo }}" style="max-width: 100%; border-radius: 4px;">
+    {% endif %}
+    <p>{{ object.contenido|linebreaks }}</p>
+    <p>{{ object.fecha }}</p>
+</div>
+{% endblock %}
+

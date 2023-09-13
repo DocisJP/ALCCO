@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}
+Detalle del Día
+{% endblock %}
+
+{% block content %}
+<br>
+<h2>Eventos para el {{ day }}/{{ month }}/{{ year }}</h2>
+<ul>
+    {% for event in events %}
+        <li><a href="{% url 'event_detail' event_id=event.id %}">{{ event.title }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    .donacion-container {
+        background-color: #1c1d26;
+        padding: 20px;
+        border-radius: 5px;
+        color: #ffffff;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .donacion-form-group {
+        margin-bottom: 15px;
+    }
+
+    .donacion-form-group label {
+        display: block;
+        margin-bottom: 5px;
+        color: #ffffff;
+    }
+
+    .donacion-form-group input {
+        width: 100%;
+        padding: 10px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        background-color: #2c2d36;
+        color: #ffffff;
+    }
+
+    .donacion-button {
+        background-color: #f56a6a;
+        border: none;
+        color: #fff;
+        padding: 10px 20px;
+        font-weight: bold;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+    }
+
+    .donacion-button:hover {
+        background-color: #db5050;
+    }
+
+    .error-message {
+        color: #f56a6a;
+        margin-bottom: 10px;
+    }
+</style>
+
+<div class="donacion-container">
+    {% if error %}
+        <div class="error-message">{{ error }}</div>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="donacion-button">Donar</button>
+    </form>
+</div>
+{% endblock %}

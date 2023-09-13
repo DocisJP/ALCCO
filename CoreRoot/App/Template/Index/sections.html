@@ -1,0 +1,23 @@
+{% for section in sections %}
+<section class="{{ section.get_style_class }}" id="{{ section.section_type }}">
+  <span class="image fit main">
+    <img alt="" src="{{ section.image.url }}" />
+  </span>
+  <div class="content">
+    <header>
+      <h2>{{ section.title }}</h2>
+      <p>{{ section.content }}</p>
+    </header>
+    {% if section.button_text %}
+    <ul class="actions">
+      <li>
+        <a class="button" href="{{ section.button_link }}">
+          {{ section.button_text|truncatewords:4 }}
+        </a>
+      </li>
+    </ul>
+    {% endif %}
+  </div>
+  <a class="goto-next scrolly" href="#{{ section.next_id }}">Next</a>
+</section>
+{% endfor %}
