@@ -9,6 +9,7 @@ Contiene una sección "About", un "FAQ" y un "Index" dinamico.
 Como funcionalidad: 
   1) Brinda la posibilidad de contactarse con las personas a cargo de la organización enviando un mail desde la página misma.
   2) Permite realizar donaciones
+  3) Permite organizar y agendar eventos a través de un calendario
 
 How to run: 
 Ejectuar 'Poetry': 
